@@ -1,14 +1,8 @@
 import React from 'react';
 import { Container, Grid } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
 
-import Header from 'components/Header';
-
-const useStyles = makeStyles(() => ({
-  container: {
-    marginTop: '3rem'
-  }
-}));
+import { useStyles } from 'components/styles/index';
+import Header from 'layouts/Header';
 
 interface CommonLayoutProps {
   children: React.ReactElement;
@@ -23,7 +17,7 @@ const CommonLayout = ({ children }: CommonLayoutProps) => {
         <Header />
       </header>
       <main>
-        <Container maxWidth='lg' className={classes.container}>
+        <Container maxWidth='lg' className={classes.headerContainer}>
           <Grid container justify='center'>
             <Grid item>
               {children}
