@@ -1,8 +1,17 @@
 export interface SignUpData {
-  name: string;
+  firstName: string;
+  lastName: string;
   email: string;
   password: string;
-  passwordConfirmation: string
+  passwordConfirmation: string;
+  gender: number;
+  prefecture: number;
+  birthday: Date;
+  image: string;
+}
+
+export interface SignUpFormData extends FormData {
+  append(name: keyof SignUpData, value: String | Blob, fileName?: string): any
 }
 
 export interface SignInData {
