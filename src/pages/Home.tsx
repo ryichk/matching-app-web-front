@@ -2,14 +2,14 @@ import React, { useContext } from 'react';
 import { useHistory, Link } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import {
-  Grid,
-  Typography,
+  Avatar,
+  Button,
   Card,
   CardContent,
-  IconButton,
-  Button,
-  Avatar,
   Divider,
+  Grid,
+  IconButton,
+  Typography,
 } from '@material-ui/core';
 import SettingsIcon from '@material-ui/icons/Settings';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';

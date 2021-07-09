@@ -1,13 +1,15 @@
 import React, { useState, useContext } from 'react';
 import { useHistory, Link } from 'react-router-dom';
 import Cookies from 'js-cookie';
-import { Typography } from '@material-ui/core';
-import TextField from '@material-ui/core/TextField';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
-import CardHeader from '@material-ui/core/CardHeader';
-import Button from '@material-ui/core/Button';
-import Box from '@material-ui/core/Box';
+import {
+  Box,
+  Button,
+  Card,
+  CardContent,
+  CardHeader,
+  TextField,
+  Typography
+} from '@material-ui/core';
 
 import { AuthContext } from 'App';
 import AlertMessage from 'components/utils/AlertMessage';

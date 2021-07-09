@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useContext } from 'react';
 import {
-  Grid,
-  Typography,
-  Dialog,
-  DialogContent,
   Avatar,
   Button,
+  Dialog,
+  DialogContent,
   Divider,
+  Grid,
+  Typography
 } from '@material-ui/core';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
