@@ -1,8 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { useHistory, Link } from 'react-router-dom';
-import Cookie from 'js-cookie';
-
-import { makeStyles, Theme } from '@material-ui/core/styles';
+import Cookies from 'js-cookie';
 import { Typography } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
 import Card from '@material-ui/core/Card';
@@ -14,37 +12,14 @@ import Box from '@material-ui/core/Box';
 import { AuthContext } from 'App';
 import AlertMessage from 'components/utils/AlertMessage';
 import { signIn } from 'lib/api/auth';
+import { useStyles } from 'components/styles/index';
 import { SignInData } from 'interfaces/index';
 
-const useStyles = makeStyles((theme: Theme) => ({
-  container: {
-    marginTop: theme.spacing(6),
-  },
-  submitBtn:  {
-    marginTop: theme.spacing(2),
-    flexGrow: 1,
-    textTransform: 'none',
-  },
-  header: {
-    textAlign: 'center',
-  },
-  card: {
-    padding: theme.spacing(2),
-    maxWidth: 400,
-  },
-  box: {
-    marginTop: '2rem',
-  },
-  link: {
-    textDecoration: 'none',
-  },
-}));
-
 const SignIn: React.FC = () => {
-  const classes = useStyles();
+  const styles = useStyles();
   const history = useHistory();
 
-  const { setIsSignedIn, setCurrentUser } = useContext(AuthContext);
+  const { isSignedIn, setIsSignedIn, currentUser, setCurrentUser } = useContext(AuthContext);
 
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
@@ -63,9 +38,9 @@ const SignIn: React.FC = () => {
       console.log(response);
 
       if (response.status === 200) {
-        Cookie.set('_access_token', response.headers['access-token']);
-        Cookie.set('_client', response.headers['client']);
-        Cookie.set('_uid', response.headers['uid']);
+        Cookies.set('_access_token', response.headers['access-token']);
+        Cookies.set('_client', response.headers['client']);
+        Cookies.set('_uid', response.headers['uid']);
 
         setIsSignedIn(true);
         setCurrentUser(response.data.data);
@@ -73,6 +48,7 @@ const SignIn: React.FC = () => {
         history.push('/');
 
         console.log('Signed in successfully!');
+        console.log(`current user: ${response.data.data}`)
       } else {
         setAlertMessageOpen(true);
       }
@@ -84,60 +60,68 @@ const SignIn: React.FC = () => {
 
   return (
     <>
-      <form noValidate autoComplete='off'>
-        <Card className={classes.card}>
-          <CardHeader className={classes.header} title='Sign In' />
-          <CardContent>
-            <TextField
-              variant='outlined'
-              required
-              fullWidth
-              label='Email'
-              value={email}
-              margin='dense'
-              onChange={event => setEmail(event.target.value)}
+      {
+        isSignedIn && currentUser ? (
+          <p>Current User: {currentUser.firstName} {currentUser.lastName}</p>
+        ) : (
+          <>
+            <form noValidate autoComplete='off'>
+              <Card className={styles.formCard}>
+                <CardHeader className={styles.header} title='Sign In' />
+                <CardContent>
+                  <TextField
+                    variant='outlined'
+                    required
+                    fullWidth
+                    label='Email'
+                    value={email}
+                    margin='dense'
+                    onChange={event => setEmail(event.target.value)}
+                  />
+                  <TextField
+                    variant='outlined'
+                    required
+                    fullWidth
+                    label='password'
+                    type='password'
+                    placeholder='At least 8 characters'
+                    value={password}
+                    margin='dense'
+                    autoComplete='current-password'
+                    onChange={event => setPassword(event.target.value)}
+                  />
+                  <div style={{ textAlign: 'right'}} >
+                    <Button
+                      type='submit'
+                      variant='outlined'
+                      color='primary'
+                      disabled={!email || !password ? true : false}
+                      className={styles.submitBtn}
+                      onClick={handleSubmit}
+                    >
+                      Submit
+                    </Button>
+                  </div>
+                  <Box textAlign='center' className={styles.box}>
+                    <Typography variant='body2'>
+                      If you haven't created an account yet, please do so&nbsp;
+                      <Link to='/sign-up' className={styles.link}>
+                        here.
+                      </Link>
+                    </Typography>
+                  </Box>
+                </CardContent>
+              </Card>
+            </form>
+            <AlertMessage
+              open={alertMessageOpen}
+              setOpen={setAlertMessageOpen}
+              severity='error'
+              message='Wrong email or password. Please check again.'
             />
-            <TextField
-              variant='outlined'
-              required
-              fullWidth
-              label='password'
-              type='password'
-              placeholder='At least 6 characters'
-              value={password}
-              margin='dense'
-              autoComplete='current-password'
-              onChange={event => setPassword(event.target.value)}
-            />
-            <div style={{ textAlign: 'right'}} >
-              <Button
-                type='submit'
-                variant='outlined'
-                color='primary'
-                disabled={!email || !password ? true : false}
-                className={classes.submitBtn}
-                onClick={handleSubmit}
-              >
-                Submit
-              </Button>
-            </div>
-            <Box textAlign='center' className={classes.box}>
-              <Typography variant='body2'>
-                If you haven't created an account yet, please do so&nbsp;
-                <Link to='/signup' className={classes.link}>
-                  here.
-                </Link>
-              </Typography>
-            </Box>
-          </CardContent>
-        </Card>
-      </form>
-      <AlertMessage
-        open={alertMessageOpen}
-        setOpen={setAlertMessageOpen}
-        severity='error'
-        message='Wrong email or password. Please check again.'
-      />
+          </>
+        )
+      }
     </>
   );
 }
