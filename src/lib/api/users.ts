@@ -1,6 +1,6 @@
-import client from 'lib/api/client';
-
 import Cookies from 'js-cookie';
+
+import client from 'lib/api/client';
 
 export const getUsers = () => {
   return client.get('users', {

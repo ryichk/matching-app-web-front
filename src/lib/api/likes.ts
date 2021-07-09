@@ -1,7 +1,7 @@
+import Cookies from 'js-cookie';
+
 import client from 'lib/api/client';
 import { Like } from 'interfaces/index';
-
-import Cookies from 'js-cookie';
 
 export const getLikes = () => {
   return client.get('likes', {
