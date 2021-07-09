@@ -1,10 +1,14 @@
 import React, { useState, useEffect, createContext } from 'react';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
+import Cookies from 'js-cookie';
 
 import CommonLayout from 'layouts/CommonLayout';
 import Home from 'pages/Home';
 import SignUp from 'pages/SignUp';
 import SignIn from 'pages/SignIn';
+import Users from 'pages/Users';
+import EditUserProfile from 'pages/EditUserProfile';
+import NotFound from 'pages/NotFound';
 
 import { getCurrentUser } from 'lib/api/auth';
 import { User } from 'interfaces/index';
@@ -47,13 +51,18 @@ const App: React.FC = () => {
 
   const Private = ({ children }: { children: React.ReactElement }) => {
     if (!loading) {
-      if (isSignedIn) {
+      if (isSignedIn && currentUser) {
         return children;
       } else {
-        return <Redirect to='/signin' />;
+        Cookies.remove('_access_token');
+        Cookies.remove('_client');
+        Cookies.remove('_uid');
+        setIsSignedIn(false);
+        setCurrentUser(undefined);
+        return <Redirect to='/sign-in' />;
       }
     } else {
-      return <></>;
+      return <>Loading...</>;
     }
   }
 
@@ -62,11 +71,14 @@ const App: React.FC = () => {
       <AuthContext.Provider value={{ loading, setLoading, isSignedIn, setIsSignedIn, currentUser, setCurrentUser }}>
         <CommonLayout>
           <Switch>
-            <Route exact path='/signup' component={SignUp} />
-            <Route exact path='/signin' component={SignIn} />
+            <Route exact path='/sign-up' component={SignUp} />
+            <Route exact path='/sign-in' component={SignIn} />
             <Private>
               <Switch>
                 <Route exact path='/' component={Home} />
+                <Route exact path='/users' component={Users} />
+                <Route exact path='/edit-profile' component={EditUserProfile} />
+                <Route component={NotFound} />
               </Switch>
             </Private>
           </Switch>
