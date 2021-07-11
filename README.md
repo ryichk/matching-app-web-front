@@ -1,4 +1,4 @@
-# Getting Started with Create React App
+# Matching App Web Front
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -13,6 +13,18 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
+
+### `yarn format`
+
+Runs Prettier. Then the code will be formatted.
+
+### `yarn lint`
+
+Runs tsc type checking and ESLint. Then the code will be lintted.
+
+### `yarn lint:fix`
+
+Runs tsc type checking and ESLint with fix option.
 
 ### `yarn test`
 
