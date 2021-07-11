@@ -1,9 +1,6 @@
-import {
-  makeStyles,
-  Theme,
-} from '@material-ui/core';
+import { makeStyles, Theme } from '@material-ui/core';
 
-export const useStyles = makeStyles((theme: Theme) => ({
+const common = makeStyles((theme: Theme) => ({
   link: {
     textDecoration: 'none',
   },
@@ -11,10 +8,10 @@ export const useStyles = makeStyles((theme: Theme) => ({
     marginTop: theme.spacing(6),
   },
   headerContainer: {
-    marginTop: '3rem'
+    marginTop: '3rem',
   },
   box: {
-    marginBottom: '1.5rem'
+    marginBottom: '1.5rem',
   },
   signInBox: {
     marginTop: '2rem',
@@ -22,27 +19,27 @@ export const useStyles = makeStyles((theme: Theme) => ({
   title: {
     flexgrow: 1,
     textDecoration: 'none',
-    color: 'inherit'
+    color: 'inherit',
   },
   avatar: {
     width: theme.spacing(10),
-    height: theme.spacing(10)
+    height: theme.spacing(10),
   },
   header: {
     textAlign: 'center',
   },
   card: {
-    width: 340
+    width: 340,
   },
   formCard: {
     padding: theme.spacing(2),
     maxWidth: 400,
   },
   input: {
-    display: 'none'
+    display: 'none',
   },
   imagePreview: {
-    width: '100%'
+    width: '100%',
   },
   submitBtn: {
     marginTop: theme.spacing(2),
@@ -51,13 +48,15 @@ export const useStyles = makeStyles((theme: Theme) => ({
   },
   inputFileButton: {
     textTransform: 'none',
-    color: theme.palette.primary.main
+    color: theme.palette.primary.main,
   },
   imageUploadBtn: {
-    textAlign: 'right'
+    textAlign: 'right',
   },
   linkBtn: {
     textTransform: 'none',
-    marginLeft: theme.spacing(1)
+    marginLeft: theme.spacing(1),
   },
 }));
+
+export default common;

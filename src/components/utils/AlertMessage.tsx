@@ -2,26 +2,47 @@ import React from 'react';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert, { AlertProps } from '@material-ui/lab/Alert';
 
-const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
-  props,
-  ref,
-) {
-  return <MuiAlert elevation={6} ref={ref} variant='filled' {...props} />
+import { AlertMessageProps } from 'interfaces';
+
+const Alert = React.forwardRef<HTMLDivElement, AlertProps>((props: AlertProps, ref) => {
+  const {
+    action,
+    children,
+    classes,
+    closeText,
+    color,
+    icon,
+    iconMapping,
+    onClose,
+    role,
+    severity,
+  } = props;
+  return (
+    <MuiAlert
+      elevation={6}
+      ref={ref}
+      variant="filled"
+      action={action}
+      classes={classes}
+      closeText={closeText}
+      color={color}
+      icon={icon}
+      iconMapping={iconMapping}
+      onClose={onClose}
+      role={role}
+      severity={severity}
+    >
+      {children}
+    </MuiAlert>
+  );
 });
 
-interface AlertMessageProps {
-  open: boolean;
-  setOpen: Function;
-  severity: 'error' | 'success' | 'info' | 'warning';
-  message: string
-}
-
-const AlertMessage = ({ open, setOpen, severity, message }: AlertMessageProps) => {
+const AlertMessage = ({ open, setOpen, severity, message }: AlertMessageProps): JSX.Element => {
   const handleCloseAlertMessage = (event?: React.SyntheticEvent, reason?: string) => {
     if (reason === 'clickaway') return;
 
     setOpen(false);
-  }
+  };
 
   return (
     <Snackbar
@@ -35,6 +56,6 @@ const AlertMessage = ({ open, setOpen, severity, message }: AlertMessageProps) =
       </Alert>
     </Snackbar>
   );
-}
+};
 
 export default AlertMessage;
