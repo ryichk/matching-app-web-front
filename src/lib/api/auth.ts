@@ -1,46 +1,37 @@
-import client from 'lib/api/client';
+import { AxiosPromise, AxiosResponse } from 'axios';
 import Cookies from 'js-cookie';
-import { UpdateUserFormData } from 'interfaces/index';
+import client from 'lib/api/client';
+import { UpdateUserFormData, SignUpFormData, SignInData } from 'interfaces/index';
 
-import { SignUpFormData, SignInData } from 'interfaces/index';
+const signUp = (data: SignUpFormData): AxiosPromise<AxiosResponse> => client.post('auth', data);
 
-export const signUp = (data: SignUpFormData) => {
-  return client.post('auth', data);
-}
+const signIn = (data: SignInData): AxiosPromise<AxiosResponse> => client.post('auth/sign_in', data);
 
-export const signIn = (data: SignInData) => {
-  return client.post('auth/sign_in', data);
-}
-
-export const signOut = () => {
-  return client.delete('auth/sign_out', {
+const signOut = (): AxiosPromise =>
+  client.delete('auth/sign_out', {
     headers: {
       'access-token': Cookies.get('_access_token'),
-      'client': Cookies.get('_client'),
-      'uid': Cookies.get('_uid')
-    }
+      client: Cookies.get('_client'),
+      uid: Cookies.get('_uid'),
+    },
   });
-}
 
-export const getCurrentUser = () => {
-  if (!Cookies.get('_access_token') || !Cookies.get('_client') || !Cookies.get('_uid')) {
-    return;
-  }
-  return client.get('/auth/sessions', {
+const getCurrentUser = (): AxiosPromise =>
+  client.get('/auth/sessions', {
     headers: {
       'access-token': Cookies.get('_access_token'),
-      'client': Cookies.get('_client'),
-      'uid': Cookies.get('_uid')
-    }
+      client: Cookies.get('_client'),
+      uid: Cookies.get('_uid'),
+    },
   });
-}
 
-export const updateUser = (data: UpdateUserFormData) => {
-  return client.put(`auth`, data, {
+const updateUser = (data: UpdateUserFormData): AxiosPromise<AxiosResponse> =>
+  client.put('auth', data, {
     headers: {
       'access-token': Cookies.get('_access_token'),
-      'client': Cookies.get('_client'),
-      'uid': Cookies.get('_uid')
-    }
+      client: Cookies.get('_client'),
+      uid: Cookies.get('_uid'),
+    },
   });
-}
+
+export { signUp, signIn, signOut, getCurrentUser, updateUser };
