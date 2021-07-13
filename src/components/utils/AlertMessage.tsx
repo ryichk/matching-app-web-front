@@ -2,7 +2,7 @@ import React from 'react';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert, { AlertProps } from '@material-ui/lab/Alert';
 
-import { AlertMessageProps } from 'interfaces';
+import { AlertMessageProps } from 'types';
 
 const Alert = React.forwardRef<HTMLDivElement, AlertProps>((props: AlertProps, ref) => {
   const {

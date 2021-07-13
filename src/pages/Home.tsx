@@ -15,7 +15,7 @@ import SettingsIcon from '@material-ui/icons/Settings';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
 import { AuthContext } from 'App';
-import { Severity } from 'interfaces';
+import { Severity } from 'types';
 import prefectures from 'data/prefectures';
 import { signOut } from 'lib/api/auth';
 import getAge from 'lib/utils/user';

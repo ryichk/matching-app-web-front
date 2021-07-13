@@ -10,7 +10,7 @@ import Users from 'pages/Users';
 import EditUserProfile from 'pages/EditUserProfile';
 import NotFound from 'pages/NotFound';
 
-import { Severity, User } from 'interfaces';
+import { Severity, User } from 'types';
 import { getCurrentUser } from 'lib/api/auth';
 import AlertMessage from 'components/utils/AlertMessage';
 

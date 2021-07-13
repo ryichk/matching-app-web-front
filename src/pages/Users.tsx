@@ -12,7 +12,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 
 import { AuthContext } from 'App';
-import { User, Like, Severity } from 'interfaces/index';
+import { User, Like, Severity } from 'types';
 import prefectures from 'data/prefectures';
 import { getUsers } from 'lib/api/users';
 import { getLikes, createLike } from 'lib/api/likes';

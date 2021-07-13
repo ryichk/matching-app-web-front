@@ -1,4 +1,4 @@
-import { User } from 'interfaces/index';
+import { User } from 'types';
 
 const getAge = (user: User): number => {
   const birthday = user.birthday.toString().replace(/-/g, '');

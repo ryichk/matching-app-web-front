@@ -2,7 +2,7 @@ import { AxiosPromise } from 'axios';
 import Cookies from 'js-cookie';
 
 import client from 'lib/api/client';
-import { Like } from 'interfaces/index';
+import { Like } from 'types';
 
 const getLikes = (): AxiosPromise =>
   client.get('likes', {

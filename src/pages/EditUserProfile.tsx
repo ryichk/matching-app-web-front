@@ -20,7 +20,7 @@ import PhotoCamera from '@material-ui/icons/PhotoCamera';
 import CancelIcon from '@material-ui/icons/Cancel';
 
 import { AuthContext } from 'App';
-import { UpdateUserFormData, Severity } from 'interfaces/index';
+import { UpdateUserFormData, Severity } from 'types';
 import prefectures from 'data/prefectures';
 import { updateUser } from 'lib/api/auth';
 import AlertMessage from 'components/utils/AlertMessage';
