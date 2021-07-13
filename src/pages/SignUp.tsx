@@ -42,7 +42,7 @@ const SignUp: React.FC = () => {
   const [password, setPassword] = useState<string>('');
   const [passwordConfirmation, setPasswordConfirmation] = useState<string>('');
   const [gender, setGender] = useState<number>(0);
-  const [prefecture, setPrefecture] = useState<number>(13);
+  const [prefecture, setPrefecture] = useState<number>(12);
   const [birthday, setBirthday] = useState<Date | null>(new Date('2000-01-01T00:00:00'));
   const [image, setImage] = useState<string>('');
   const [imagePreview, setImagePreview] = useState<string>('');
@@ -97,7 +97,7 @@ const SignUp: React.FC = () => {
         setPassword('');
         setPasswordConfirmation('');
         setGender(0);
-        setPrefecture(13);
+        setPrefecture(12);
         setBirthday(new Date());
 
         setAlertMessageOpen(true);
@@ -206,7 +206,7 @@ const SignUp: React.FC = () => {
                 }
                 label="居住地"
               >
-                {Object.entries(prefectures).map(([key, value]) => (
+                {Object.entries({ ...prefectures }).map(([key, value]) => (
                   <MenuItem key={key} value={key}>
                     {value}
                   </MenuItem>

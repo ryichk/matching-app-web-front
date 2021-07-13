@@ -37,7 +37,7 @@ const Users: React.FC = () => {
     gender: 0,
     birthday: '',
     profile: '',
-    prefecture: 13,
+    prefecture: 12,
     allowPasswordChange: true,
   };
 
@@ -51,7 +51,7 @@ const Users: React.FC = () => {
   const [alertMessage, setAlertMessage] = useState<string>('');
   const [severity, setSeverity] = useState<Severity>('info');
 
-  const userPrefecture = (): string => prefectures[user.prefecture - 1];
+  const userPrefecture = (): string => prefectures[user.prefecture];
 
   const handleCreateLike = async (otherUser: User) => {
     const data: Like = {
