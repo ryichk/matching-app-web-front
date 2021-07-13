@@ -1,4 +1,4 @@
-const prefecturesList: Array<string> = [
+const prefectures: Array<string> = [
   '北海道',
   '青森県',
   '岩手県',
@@ -47,7 +47,5 @@ const prefecturesList: Array<string> = [
   '鹿児島県',
   '沖縄県',
 ];
-
-const prefectures = { ...prefecturesList };
 
 export default prefectures;

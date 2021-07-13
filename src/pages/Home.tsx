@@ -32,7 +32,7 @@ const Home: React.FC = () => {
   const [alertMessage, setAlertMessage] = useState<string>('');
   const [severity, setSeverity] = useState<Severity>('info');
 
-  const currentUserPrefecture = (): string => prefectures[(currentUser?.prefecture || 0) - 1];
+  const currentUserPrefecture = (): string => prefectures[currentUser?.prefecture || 0];
 
   const handleSignOut = async () => {
     try {
@@ -44,7 +44,7 @@ const Home: React.FC = () => {
         Cookies.remove('_uid');
 
         setIsSignedIn(false);
-        histroy.push('/signin');
+        histroy.push('/sign-in');
 
         setAlertMessageOpen(true);
         setAlertMessage('Succeeded in sign out');
