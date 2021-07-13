@@ -190,8 +190,8 @@ const SignUp: React.FC = () => {
                 }
                 label="Gender"
               >
-                {Object.entries(genders).map(([key, value]) => (
-                  <MenuItem value={key}>{value}</MenuItem>
+                {genders.map((value, index) => (
+                  <MenuItem value={index}>{value}</MenuItem>
                 ))}
               </Select>
             </FormControl>
@@ -206,8 +206,8 @@ const SignUp: React.FC = () => {
                 }
                 label="居住地"
               >
-                {Object.entries({ ...prefectures }).map(([key, value]) => (
-                  <MenuItem key={key} value={key}>
+                {prefectures.map((value, index) => (
+                  <MenuItem key={String(index)} value={index}>
                     {value}
                   </MenuItem>
                 ))}

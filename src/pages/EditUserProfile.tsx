@@ -127,8 +127,8 @@ const EditUserProfile: React.FC = () => {
                 }
                 label="居住地"
               >
-                {Object.entries(prefectures).map(([key, value]) => (
-                  <MenuItem key={key} value={key}>
+                {prefectures.map((value, index) => (
+                  <MenuItem key={String(index)} value={index}>
                     {value}
                   </MenuItem>
                 ))}
