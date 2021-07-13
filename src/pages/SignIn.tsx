@@ -12,7 +12,7 @@ import {
 } from '@material-ui/core';
 
 import { AuthContext } from 'App';
-import { SignInData, Severity } from 'interfaces/index';
+import { SignInData, Severity } from 'types';
 import { signIn } from 'lib/api/auth';
 import AlertMessage from 'components/utils/AlertMessage';
 import commonStyles from 'components/styles/common';

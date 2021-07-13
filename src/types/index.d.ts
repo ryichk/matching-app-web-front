@@ -73,6 +73,7 @@ export interface Message {
 }
 
 export type Severity = 'error' | 'success' | 'info' | 'warning';
+
 export interface AlertMessageProps {
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;

@@ -22,7 +22,7 @@ import PhotoCamera from '@material-ui/icons/PhotoCamera';
 import CancelIcon from '@material-ui/icons/Cancel';
 
 import { AuthContext } from 'App';
-import { SignUpFormData, Severity } from 'interfaces/index';
+import { SignUpFormData, Severity } from 'types';
 import genders from 'data/genders';
 import prefectures from 'data/prefectures';
 import { signUp } from 'lib/api/auth';

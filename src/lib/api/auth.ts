@@ -1,7 +1,7 @@
 import { AxiosPromise, AxiosResponse } from 'axios';
 import Cookies from 'js-cookie';
 import client from 'lib/api/client';
-import { UpdateUserFormData, SignUpFormData, SignInData } from 'interfaces/index';
+import { UpdateUserFormData, SignUpFormData, SignInData } from 'types';
 
 const signUp = (data: SignUpFormData): AxiosPromise<AxiosResponse> => client.post('auth', data);
 
