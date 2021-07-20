@@ -1,8 +1,17 @@
 import { makeStyles, Theme } from '@material-ui/core';
 
 const common = makeStyles((theme: Theme) => ({
+  root: {
+    flexGrow: 1,
+    minWidth: 340,
+    maxWidth: '100%',
+  },
   link: {
     textDecoration: 'none',
+  },
+  chatRoomLink: {
+    textDecoration: 'none',
+    color: 'inherit',
   },
   container: {
     marginTop: theme.spacing(6),
@@ -24,6 +33,7 @@ const common = makeStyles((theme: Theme) => ({
   avatar: {
     width: theme.spacing(10),
     height: theme.spacing(10),
+    margin: '0 auto',
   },
   header: {
     textAlign: 'center',
@@ -35,8 +45,17 @@ const common = makeStyles((theme: Theme) => ({
     padding: theme.spacing(2),
     maxWidth: 400,
   },
+  formWrapper: {
+    padding: '2px 4px',
+    display: 'flex',
+    alignItems: 'center',
+    width: 340,
+  },
   input: {
     display: 'none',
+  },
+  textInputWrapper: {
+    width: '100%',
   },
   imagePreview: {
     width: '100%',
@@ -45,6 +64,9 @@ const common = makeStyles((theme: Theme) => ({
     marginTop: theme.spacing(2),
     flexGrow: 1,
     textTransform: 'none',
+  },
+  messageSubmitBtn: {
+    marginLeft: theme.spacing(1),
   },
   inputFileButton: {
     textTransform: 'none',

@@ -62,7 +62,7 @@ export interface ChatRoom {
     id: number;
   };
   otherUser: User;
-  lastMessage: MessageChannel;
+  lastMessage: Message;
 }
 
 export interface Message {

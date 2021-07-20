@@ -8,6 +8,8 @@ import SignUp from 'pages/SignUp';
 import SignIn from 'pages/SignIn';
 import Users from 'pages/Users';
 import EditUserProfile from 'pages/EditUserProfile';
+import ChatRooms from 'pages/ChatRooms';
+import ChatRoom from 'pages/ChatRoom';
 import NotFound from 'pages/NotFound';
 
 import { Severity, User } from 'types';
@@ -91,6 +93,8 @@ const App: React.FC = () => {
                   <Route exact path="/" component={Home} />
                   <Route exact path="/users" component={Users} />
                   <Route exact path="/edit-profile" component={EditUserProfile} />
+                  <Route exact path="/chat-rooms" component={ChatRooms} />
+                  <Route path="/chat-room/:id" component={ChatRoom} />
                   <Route component={NotFound} />
                 </Switch>
               </Private>
